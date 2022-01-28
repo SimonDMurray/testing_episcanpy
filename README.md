@@ -6,6 +6,7 @@ https://stackoverflow.com/questions/60314664/how-to-build-singularity-container-
 
 The script tests the speed and memory usage of episcanpy when running a conventional RNA seq pipeline.
 Steps include:
+       
        Reading in data and manipulating it.
        Converting data to anndata.
        Normalising data.
