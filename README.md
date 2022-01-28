@@ -13,8 +13,9 @@ Steps include:
     Calculating variability of features.
     Clustering.
     Visualising.
-    Multicore processing 
-    (tsne function is used as an underlying feature in epi.pp.lazy even setting value to 1 increases speed).
+    
+Multicore processing 
+(tsne function is used as an underlying function in epi.pp.lazy even setting value to 1 increases speed).
  
  
 The clustering data is saved to tsv and variability plots outputted as pdfs.
