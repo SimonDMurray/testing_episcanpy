@@ -7,7 +7,10 @@ import pandas as pd
 import scipy.io as sci
 import scipy as ss
 import episcanpy.api as epi
-from MulticoreTSNE import MulticoreTSNE as TSNE
+
+#Commented out the functions that use epi.pp.lazy as I have now extrapolated the commands that combines and individually run them to remove tsne bottleneck
+
+#from MulticoreTSNE import MulticoreTSNE as TSNE
 
 mat = sci.mmread("mmtx/filtered_window_bc_matrix.mmtx.gz")
 trans_mat = mat.transpose()
@@ -20,8 +23,11 @@ adata = sc.AnnData(df)
 adata.X = ss.sparse.csr_matrix(adata.X)
 adata.var.index.name = 'region_names'
 adata.obs.index.name = 'cell_names'
-tsne = TSNE(n_jobs=1)
-epi.pp.lazy(adata)
+#tsne = TSNE(n_jobs=1)
+#epi.pp.lazy(adata)
+epi.pp.pca(adata)
+epi.pp.neighbors(adata, method="umap")
+epi.tl.umap(adata)
 epi.pp.normalize_total(adata)
 epi.pp.cal_var(adata, save='calculate_variability.pdf')
 min_score_value = 0.515
