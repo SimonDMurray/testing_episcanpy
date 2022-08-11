@@ -17,3 +17,5 @@ Steps include:
 Multicore processing is used as the tsne function is used as an underlying function in epi.pp.lazy even setting value to 1 increases speed.
  
 The clustering data is saved to tsv and variability plots outputted as pdfs.
+
+This has now been implemented into the `cellgeni/cellatac` pipeline
