@@ -12,14 +12,9 @@ import episcanpy.api as epi
 
 #from MulticoreTSNE import MulticoreTSNE as TSNE
 
-mat = sci.mmread("mmtx/filtered_window_bc_matrix.mmtx.gz")
-trans_mat = mat.transpose()
-df = pd.DataFrame(trans_mat.toarray())
+adata = ad.read_mtx("mmtx/filtered_window_bc_matrix.mmtx.gz")
 region_names = pd.read_table("mmtx/regions.names", header = None)
 cell_names = pd.read_table("mmtx/cell.names", header = None)
-df.columns=region_names[0]
-df.index=cell_names[0]
-adata = sc.AnnData(df)
 adata.X = ss.sparse.csr_matrix(adata.X)
 adata.var.index.name = 'region_names'
 adata.obs.index.name = 'cell_names'
