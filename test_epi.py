@@ -13,11 +13,14 @@ import episcanpy.api as epi
 #from MulticoreTSNE import MulticoreTSNE as TSNE
 
 adata = ad.read_mtx("mmtx/filtered_window_bc_matrix.mmtx.gz")
+adata = adata.T
 region_names = pd.read_table("mmtx/regions.names", header = None)
 cell_names = pd.read_table("mmtx/cell.names", header = None)
 adata.X = ss.sparse.csr_matrix(adata.X)
 adata.var.index.name = 'region_names'
 adata.obs.index.name = 'cell_names'
+adata.obs.index = cell_names[0]
+adata.var.index = region_names[0]
 #tsne = TSNE(n_jobs=1)
 #epi.pp.lazy(adata)
 epi.pp.pca(adata)
